@@ -82,4 +82,14 @@ public class ChromosomePairTest {
 		assertEquals(4, cp.similarity());
 	}
 
+	@Test
+	public void test9() {
+		char[] x = "GGATTGG".toCharArray();
+		char[] y = "AAAGATT".toCharArray();
+		ChromosomePair cp = ChromosomePair.createChromosomePair(x, y);
+		cp.swapChars(1);
+		assertEquals("GAATTGG", cp.getXString());
+		assertEquals("AGAGATT", cp.getYString());
+	}
+
 }
