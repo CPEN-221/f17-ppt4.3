@@ -60,18 +60,26 @@ public class ChromosomePairTest {
 		assertEquals("GGGGAA", cp.getYString());
 		assertEquals(2, cp.similarity());
 	}
+
 	@Test
 	public void test7() {
 		char[] x = "GGGGGGG".toCharArray();
 		char[] y = "AAAAAA".toCharArray();
-		
-		try { 
+
+		try {
 			ChromosomePair cp = ChromosomePair.createChromosomePair(x, y);
 			fail("Should have seen an exception");
-		}
-		catch (IllegalArgumentException e) {
+		} catch (IllegalArgumentException e) {
 			// correct ... and nothing more to do
 		}
+	}
+
+	@Test
+	public void test8() {
+		char[] x = "GGATTGG".toCharArray();
+		char[] y = "AAAGATT".toCharArray();
+		ChromosomePair cp = ChromosomePair.createChromosomePair(x, y);
+		assertEquals(4, cp.similarity());
 	}
 
 }
