@@ -134,6 +134,19 @@ public void test9() {
 	assertEquals("GAATTGG", cp.getXString());
 	assertEquals("AGAGATT", cp.getYString());
 }
+
+@Test
+public void test10() {
+	char[] x = "GGGGYY".toCharArray();
+	char[] y = "AAAAAA".toCharArray();
+
+	try {
+		ChromosomePair cp = ChromosomePair.createChromosomePair(x, y);
+		fail("Should have seen an exception");
+	} catch (IllegalArgumentException e) {
+		// correct ... and nothing more to do
+	}
+}
 ```
 
 ## What Should You Implement / Guidelines
