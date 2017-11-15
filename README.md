@@ -39,12 +39,12 @@ An `AbstractSequencePair` is a datatype that represents a two equal-length `char
 3. (observer -- provided) `String getYString()` that returns a `String` representation of the `y` sequence;
 4. (observer) `int similarity()` that returns an `int` which represents the **similarity** between the `x` and `y` sequences. (From a Java perspective, this is an `abstract` method and **needs** to be implemented by any class that extends the `AbstractSequencePair` class.)
 
-You have to implement complete the `abstract` class implementation above and then create a subtype `ChromosomePair` with the following requirements:
+You have to complete the `abstract` class implementation above and then create a subtype `ChromosomePair` with the following requirements:
 
 1. A `ChromosomePair` is an `AbstractSequencePair` with the restriction that the characters in the `x` or `y` sequences are from the set `{A, C, G, T}`.
 2. A `ChromosomePair` can be mutated using a method called `crossover`. The method signature is `void crossover(int crossoverLength)`. This method mutates `ChromosomePair` as follows: the first part (the length is `crossoverLength`) of the `x` sequence is replaced with the first part of the `y` sequence, and the first part of the `y` sequence is replaced by the corresponding portion of the `x` sequence as it was prior to the call to `crossover`. The precondition for this method is that `0 <= crossoverLength <= x.length`. For example: If `x` is "ATCG" and `y` is "GGCC" then `crossover(2)` will result in `x` as "GGCG" and `y` as "ATCC".
 3. The similarity between the `x` and `y` sequences in a `ChromosomePair` is defined as the length of longest common substring shared by `x` and `y`. If `x` is "AATTTA" and `y` is "GGATTGG" then the similarity is 3 (with "ATT" as the longest common substring).
-4. A `ChromosomePair` can only be created using a `static` method called `createChromosomePair(char[] x, char[] y)`. This method can use a `private` constructor to create a `ChromosomePair` but this approach is needed because `x` and `y` should be of the same length and should only contain characters in the set `{A, C, G, T}`. This method should throw an `IllegalArgumentException` is the arguments `x` and `y` do not follow the requirements for `ChromosomePair`.
+4. A `ChromosomePair` can only be created using a `static` method called `createChromosomePair`. This method can use a `private` constructor to create a `ChromosomePair` but this approach is needed because `x` and `y` should be of the same length and should only contain characters in the set `{A, C, G, T}`. This method should throw an `IllegalArgumentException` is the arguments `x` and `y` do not follow the requirements for `ChromosomePair`. The signature for this methos is `ChromosomePair createChromosomePair(char[] x, char[] y)`. (Remember that this is a `static` method!)
 
 ### Test Cases
 
